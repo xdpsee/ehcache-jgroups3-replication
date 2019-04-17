@@ -18,7 +18,6 @@ package net.sf.ehcache.distribution.jgroups;
 
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Ehcache;
-import net.sf.ehcache.util.ClassLoaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,22 +37,26 @@ public final class CacheTestUtilities {
      * JGroups
      */
     public static final URL ASYNC_CONFIG_URL1 =
-            ClassLoaderUtil.getStandardClassLoader().getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager1.xml");
+            Thread.currentThread().getContextClassLoader()
+                    .getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager1.xml");
     /**
      * Config file 2
      */
     public static final URL ASYNC_CONFIG_URL2 =
-            ClassLoaderUtil.getStandardClassLoader().getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager2.xml");
+            Thread.currentThread().getContextClassLoader()
+                    .getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager2.xml");
     /**
      * Config file 3
      */
     public static final URL ASYNC_CONFIG_URL3 =
-            ClassLoaderUtil.getStandardClassLoader().getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager3.xml");
+            Thread.currentThread().getContextClassLoader()
+                    .getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager3.xml");
     /**
      * Config file 4
      */
     public static final URL ASYNC_CONFIG_URL4 =
-            ClassLoaderUtil.getStandardClassLoader().getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager4.xml");
+            Thread.currentThread().getContextClassLoader()
+                    .getResource("distribution/jgroups/ehcache-distributed-jgroups-file-manager4.xml");
 
     private static final ThreadLocal<String> THREAD_NAME = new ThreadLocal<String>();
 
